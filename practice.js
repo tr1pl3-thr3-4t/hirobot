@@ -1,13 +1,9 @@
 let backgroundMusic = document.getElementById("backgroundMusic");
 
 document.addEventListener("click", function() {
+    backgroundMusic.play();
     backgroundMusic.volume = 0.05;
-        console.log("Playing");
-    backgroundMusic.play().catch(function(error) {
-        console.log("Music failed to play:", error);
-    });
 }, { once: true });
-
 
 /*Nav Bar*/
 let loreTitle = document.getElementById("loreTitle");
