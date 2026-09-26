@@ -1,7 +1,6 @@
 /* Font: 
 MedievalSharp - heavy style
-Goudy Bookletter 1911 - great readability
-*/
+Goudy Bookletter 1911 - great readability*/
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=MedievalSharp&display=swap');
 
 body {
@@ -9,6 +8,7 @@ body {
     background-color: #18120e;
     color: #e8dcc8;
 
+    font-size: 18px;
     font-family: "Goudy Bookletter 1911", serif;
     font-weight: 400;
     font-style: normal;
@@ -26,7 +26,7 @@ h1 {
     font-style: normal;
 }
 .authorName{
-    font-size: 16px;
+    font-size: 20px;
     margin-left: 400px;
 }
 
@@ -52,16 +52,19 @@ aside {
 main {
     flex: 1;
     padding: 20px;
+    margin-right: 35px;
 }
+
 
 
 /*Cosmetics*/
 
 /*Sidebar*/
+/*Clickables show hand*/
 .clickable {
     cursor: pointer;
+    text-decoration: underline;
 }
-
 /*Remove indentation of Nav*/
 #navList{
     padding-left: 0;
@@ -71,9 +74,20 @@ main {
     margin-bottom: 20px;
     list-style-type: none;
 }
-
+/*Spacing between listed items*/
 .magicalList{
-    /*Spacing between listed items*/
     margin-bottom: 4px;
     list-style-type: "✦ ";
+}
+
+/*Main Text*/
+/*Divider between headings*/
+#subcat{
+    border-bottom: 1px solid #6b5540;
+}
+/*Emphasizes quotes*/
+.listQuote{
+    font-size: 16px;
+    font-style: italic;
+    margin-left: 300px;
 }
