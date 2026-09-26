@@ -1,3 +1,12 @@
+let backgroundMusic = document.getElementById("backgroundMusic");
+
+document.addEventListener("click", function() {
+    backgroundMusic.play();
+    backgroundMusic.volume = 0.05;
+}, { once: true });
+
+
+/*Nav Bar*/
 let loreTitle = document.getElementById("loreTitle");
 let loreList = document.getElementById("loreList");
 /*none is hide, block is show*/
@@ -14,9 +23,6 @@ loreTitle.addEventListener("click", function() {
 
 });
 
-
-
-/*Nav Bar*/
 let chroniclesOfTheEternalMagesTitle = document.getElementById("chroniclesOfTheEternalMagesTitle");
 let chroniclesOfTheEternalMagesList = document.getElementById("chroniclesOfTheEternalMagesList");
 chroniclesOfTheEternalMagesList.style.display = "none";
