@@ -1,8 +1,11 @@
 let backgroundMusic = document.getElementById("backgroundMusic");
 
 document.addEventListener("click", function() {
-    backgroundMusic.play();
     backgroundMusic.volume = 0.05;
+
+    backgroundMusic.play().catch(function(error) {
+        console.log("Music failed to play:", error);
+    });
 }, { once: true });
 
 
