@@ -1,0 +1,114 @@
+/* Font: 
+MedievalSharp - heavy style
+Goudy Bookletter 1911 - great readability*/
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=MedievalSharp&display=swap');
+
+body {
+    margin: 0;
+    background-color: #18120e;
+    color: #e8dcc8;
+
+    font-size: 18px;
+    font-family: "Goudy Bookletter 1911", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    padding: 30px;
+    margin-left: 50px;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "MedievalSharp", cursive;
+    font-weight: 700;
+    font-style: normal;
+}
+.authorName{
+    font-size: 20px;
+    margin-left: 400px;
+}
+
+.page {
+    border-top: 1px solid #6b5540;
+    display: flex;
+    /* flex-direction determines the main axis, defaulted to row
+            justify-content is centering on the main axis (would be row by default, so < or >)
+            align-items is centering on the other axis */
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+
+    gap: 20px;
+}
+
+aside {
+    width: 300px;
+    padding: 10px;
+    margin-left: 25px;
+    border-right: 1px solid #6b5540;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    margin-right: 35px;
+}
+
+
+
+/*Cosmetics*/
+
+/*Sidebar*/
+/*Clickables show hand*/
+.clickable {
+    cursor: pointer;
+    text-decoration: underline;
+}
+/*Remove indentation of Nav*/
+#navList{
+    padding-left: 0;
+}
+/*Spacing between category*/
+#navList > li{
+    margin-bottom: 20px;
+    list-style-type: none;
+}
+/*Spacing between listed items*/
+.magicalList{
+    margin-bottom: 4px;
+    list-style-type: "✦ ";
+}
+
+/*Main Text*/
+/*Divider between headings*/
+#subcat{
+    border-bottom: 1px solid #6b5540;
+}
+/*Emphasizes quotes*/
+.listQuote{
+    font-size: 16px;
+    font-style: italic;
+    margin-left: 300px;
+}
+
+
+
+/*Footer*/
+footer {
+    padding: 20px;
+    border-top: 1px solid #6b5540;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}
+
+footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #c9a96e;
+    text-decoration: underline;
+}
