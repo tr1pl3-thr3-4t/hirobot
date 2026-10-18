@@ -70,6 +70,13 @@ div {
 .noBorder {
     border-top: none;
 }
+.chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+    border: 0;
+}
 .dictionaryHeader {
     display: flex;
     align-items: center;
@@ -87,6 +94,26 @@ div {
     margin: 0px;
 }
 
+/* SPAN */
+.chapterName1, .chapterName2, .chapterName3 {
+    flex-shrink: 0;
+}
+#levelSelector1, #levelSelector2, #levelSelector3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    min-width: 0;
+}
+.levelNumber {
+    cursor: pointer;
+}
+.levelNumber.completed {
+    color: #758286;
+}
+.levelNumber.completed:hover, .levelNumber.current {
+    color: #c9a96e;
+    font-weight: bold;
+}
 
 
 
@@ -161,6 +188,39 @@ div {
 
 
 
+
+
+
+
+
+
+
+
+
+
+/* INITIAL SETUP */
+.navbar{
+    display: none;
+    border: 0;
+    padding: 0px;
+}
+.dictionaryHeader {
+    display: none;
+}
+.dictionarySection {
+    display: none;
+}
+#currentLevelText{
+    display: none;
+}
+.tempVar1{
+    display: none;
+    padding: 0;
+}
+.tempVar2{
+    display: none;
+    padding: 0;
+}
 
 
 
