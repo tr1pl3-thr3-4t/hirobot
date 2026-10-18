@@ -8,40 +8,51 @@
 <body>
 
     <header>
-        <h1>“A Message from Someone on Earth”</h1>
+        <h1 id="skipTestButton">“A Message from Someone on Earth”</h1>
     </header>
 
     <main class="page">
         
         <aside>
-            <h2>leVel selectoR</h2>
-                <ul id="navList">
-                    <li><span class="chapter" id="chapterOneTitle">Chapter 1: First Contact</span>
-                        <ul id="chapterOneList">
+            <div class="navbar">
+                <h2>siGnAl selectoR</h2>
 
-                            <li><span class="clickable" id="one-one">1</span></li>
-                            <li><span class="clickable" id="one-two">2</span></li>
+                <div class="chapter">
+                    <span class="chapterName1">_____:</span>
+                    <span id="levelSelector1"></span>
+                </div>
 
-                        </ul>
-                    </li>
-                    
-                </ul>
+                <div class="chapter">
+                    <span class="chapterName2">_____:</span>
+                    <span id="levelSelector2"></span>
+                </div>
+
+                <div class="chapter">
+                    <span class="chapterName3">_____:</span>
+                    <span id="levelSelector3"></span>
+                </div>
+
+            </div>
         </aside>
 
         <main class="gameSpace">
-                <h2 id="currentLevelText">leVel 1 - 1</h2>
+                <h2 id="currentLevelText"></h2>
 
-            <div>
+            <div class="noBorder tempVar1">
+                <p id="respondSignal">placeholder</p>
+            </div>
+            <div class="noBorder tempVar2">
+                <p id="hintSignal">placeholder</p>
+            </div>
+
+            <div class="noBorder">
                 <p id="questionSignal">0</p>
             </div>
 
-            <div>
-                <p id="respondSignal">>>>new signal<br>hmm maybe we should repeat what they say</p>
-                <p id="hintSignal"></p>
-            </div>
+
 
             <div>
-                <input id="signalInput" type="text" placeholder="> awaiting respond" autocomplete="off">
+                <input id="signalInput" type="text" placeholder="> awaiting response" autocomplete="off">
                 <button id="sendButton">send</button>
             </div>
         </main>
