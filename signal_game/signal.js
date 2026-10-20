@@ -143,6 +143,16 @@ let question = {
         5, ne5, 6, ne3, ne1, 1, ne2, ne2, ne2,
         3, ne5, 7, ne3, ne1, 4, ne2, ne2, ne2,
         1, ne5, 9, ne3].join("\n"),
+    35: () => [
+        7, ne4, ne1, 20, ne3, ne1, 13, ne2, ne2, ne2,
+        ne1, 9, ne5, 12, ne3, ne1, 21,ne2, ne2, ne2,
+        2, ne5, ne1, 12, ne3].join("\n"),
+
+    36: () => [
+        0, ne5, 7, ne3].join("\n"),
+    37: () => [
+        3, ne2, 2, ne2, 1, ne2, 0, ne2, ne1, 1, ne2, ne1, 2, ne2, ne1, 3, ne2, ne1, 4, ne2, ne1, 5, ne2].join("\n"),
+                
     
 
 
@@ -199,6 +209,9 @@ let answer = {
     33: "2",
 
     34: () => ["test", ne1 + "8"],
+    35: "14",
+    36: () => ["test", ne1 + "7"],
+    37: () => ["test", ne1 + "6"],
 
 
 
