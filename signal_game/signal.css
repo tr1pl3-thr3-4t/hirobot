@@ -205,14 +205,6 @@ div {
 
 
 
-
-
-
-
-
-
-
-
 /* INITIAL SETUP */
 .navbar{
     display: none;
@@ -239,49 +231,146 @@ div {
 
 
 
-/*Footer*/
-/* footer {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   MUSIC PLAYER
+================================ */
+
+.musicPlayer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+
     padding: 20px;
-    border-top: 1px solid #6b5540;
-    text-align: center;
-    font-size: 14px;
-    color: #888;
+    background: #101114;
+    border-top: 1px solid #303030;
+    z-index: 1000;
+}
+.musicPlayer > div {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
 }
 
-footer a {
-    color: #888;
+/* TRACK INFORMATION */
+.playerTrack {
+    flex: 1;
+    min-width: 0;
+}
+#trackName {
+    color: #eeeeee;
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+#trackArtist {
+    color: #777777;
+    font-size: 10px;
+    margin: 0;
+}
+
+
+/* PLAYBACK CONTROLS */
+.playerControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+.playerControls button {
+    background: none;
+    border: none;
+    padding: 5px 0;
+
+    color: #777777;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.playerControls button:hover {
+    color: #eeeeee;
+}
+#playButton {
+    color: #aaaaaa;
+}
+#playButton:hover {
+    color: #ffffff;
+}
+
+/* VOLUME */
+.playerVolume {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    color: #777777;
+    font-size: 10px;
+}
+#volumeSlider {
+    width: 90px;
+    accent-color: #aaaaaa;
+    cursor: pointer;
+}
+
+/* KEEP CONTENT ABOVE THE PLAYER */
+
+
+
+.musicPlayer div {
+    border: none;
+}
+#trackArtist a {
+    color: #777777;
     text-decoration: none;
+    transition: color 0.2s;
 }
-footer a:hover {
-    color: #c9a96e;
-    text-decoration: underline;
-} 
-
-/* 
-Sidebar
-Clickables show hand
-.clickable {
-    cursor: pointer;
-}
-.chapter {
-    cursor: pointer;
+#trackArtist a:hover {
+    color: #ffffff;
     text-decoration: underline;
 }
 
 
 
-Remove indentation of Nav
-#navList{
-    padding-left: 0;
+
+
+/* MOBILE maybe will implement
+@media (max-width: 600px) {
+    .musicPlayer {
+        padding: 10px 4%;
+        gap: 10px;
+    }
+    .playerControls {
+        gap: 12px;
+    }
+    #volumeSlider {
+        width: 55px;
+    }
 }
-Spacing between category
-#navList > li{
-    margin-bottom: 20px;
-    list-style-type: none;
-}
-Spacing between listed items
-.magicalList{
-    margin-bottom: 4px;
-    list-style-type: "✦ ";
-}
+
 */

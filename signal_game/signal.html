@@ -109,9 +109,33 @@
 
 
 
+    <section class="musicPlayer">
+        <div class="playerControls">
+            <button id="previousButton">previous</button>
+            <button id="playButton">play</button>
+            <button id="nextButton">next</button>
+        </div>
 
+        <div class="playerTrack">
+            <p id="trackName">no track playing</p>
+            <p id="trackArtist">---</p>
+        </div>
+
+        
+
+        <div class="playerVolume">
+            <span>vol</span>
+            <input type="range" id="volumeSlider"
+                min="0.2" max="0.75" step="0.01" value="0.37">
+        </div>
+
+        <audio id="audioPlayer"></audio>
+    </section>
+
+    
     <footer>
     </footer>
+
 
     <script src="signal.js"></script>
 </body>

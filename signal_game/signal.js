@@ -317,6 +317,7 @@ function milestoneCheck() {
         document.getElementById("currentLevelText").style.display = "block";
         hintSignal.textContent = `1420405752 hz is the unperturbed atomic 
         hydrogen ground state hyperfine transition frequency`;
+        playButton.click();
     }   
     else if (currentLevel === 3){
         hintSignal.textContent = `1420405752 hz seems important`;
@@ -497,7 +498,7 @@ recompileButton.addEventListener("click", function() {
 
 
 
-
+/* REWRITE QUESTION */
 let typingTimer;
 function updateQuestion() {
     let i = question[currentLevel];
@@ -520,7 +521,7 @@ function updateQuestion() {
 }
 updateQuestion();
 
-
+/* UPDATE LEVEL SELECTOR */
 function updateLevelSelector() {
     let totalLevels = 0;
     for (let chapter = 0; chapter < chapterLengths.length; chapter++) {
@@ -590,3 +591,216 @@ for (let i = 0; i < 33; i++) {
 }
 
 */
+
+
+
+
+
+
+
+// ================================
+// MUSIC PLAYER
+// ================================
+
+const playlist = [
+    // NEON HUSKY
+    {
+        title: "clean commit highway",
+        artist: "neon husky",
+        src: "music/neon-husky/clean-commit-highway.mp3"
+    },
+    {
+        title: "detached head pursuit",
+        artist: "neon husky",
+        src: "music/neon-husky/detached-head-pursuit.mp3"
+    },
+    {
+        title: "first push",
+        artist: "neon husky",
+        src: "music/neon-husky/first-push.mp3"
+    },
+    {
+        title: "initial commit",
+        artist: "neon husky",
+        src: "music/neon-husky/initial-commit.mp3"
+    },
+    {
+        title: "merging to main branch",
+        artist: "neon husky",
+        src: "music/neon-husky/merging-to-main-branch.mp3"
+    },
+    {
+        title: "nightly build sprint",
+        artist: "neon husky",
+        src: "music/neon-husky/nightly-build-sprint.mp3"
+    },
+    {
+        title: "push to origin",
+        artist: "neon husky",
+        src: "music/neon-husky/push-to-origin.mp3"
+    },
+    {
+        title: "smooth rebase",
+        artist: "neon husky",
+        src: "music/neon-husky/smooth-rebase.mp3"
+    },
+    {
+        title: "staging area sunset",
+        artist: "neon husky",
+        src: "music/neon-husky/staging-area-sunset.mp3"
+    },
+    {
+        title: "upstream drift",
+        artist: "neon husky",
+        src: "music/neon-husky/upstream-drift.mp3"
+    },
+
+    // DOS-88
+    {
+        title: "billy's sacrifice",
+        artist: "dos-88",
+        src: "music/dos88/billys-sacrifice.mp3"
+    },
+    {
+        title: "city stomper",
+        artist: "dos-88",
+        src: "music/dos88/city-stomper.mp3"
+    },
+    {
+        title: "crash landing",
+        artist: "dos-88",
+        src: "music/dos88/crash-landing.mp3"
+    },
+    {
+        title: "far away",
+        artist: "dos-88",
+        src: "music/dos88/far-away.mp3"
+    },
+    {
+        title: "parabola",
+        artist: "dos-88",
+        src: "music/dos88/parabola.mp3"
+    },
+    {
+        title: "race to mars",
+        artist: "dos-88",
+        src: "music/dos88/race-to-mars.mp3"
+    },
+    {
+        title: "smooth sailing",
+        artist: "dos-88",
+        src: "music/dos88/smooth-sailing.mp3"
+    },
+
+    // NEWC42
+    {
+        title: "far beyond",
+        artist: "newc42",
+        src: "music/newc42/far-beyond.mp3"
+    },
+    {
+        title: "no gravity",
+        artist: "newc42",
+        src: "music/newc42/no-gravity.mp3"
+    },
+    {
+        title: "out of the orbit",
+        artist: "newc42",
+        src: "music/newc42/out-of-the-orbit.mp3"
+    },
+    {
+        title: "stars",
+        artist: "newc42",
+        src: "music/newc42/stars.mp3"
+    }
+];
+function shufflePlaylist() {
+    for (let i = playlist.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
+    }
+}
+
+const audio = document.getElementById("audioPlayer");
+const playButton = document.getElementById("playButton");
+const previousButton = document.getElementById("previousButton");
+const nextButton = document.getElementById("nextButton");
+const trackName = document.getElementById("trackName");
+const trackArtist = document.getElementById("trackArtist");
+const volumeSlider = document.getElementById("volumeSlider");
+let currentTrack = 0;
+
+// Initial volume
+audio.volume = 0.05;
+
+// Load a track
+function loadTrack(index) {
+    currentTrack = index;
+    const track = playlist[currentTrack];
+    audio.src = track.src;
+    trackName.textContent = track.title;
+    
+    const artistLinks = {
+        "neon husky": "https://neonhusky.dev",
+        "dos-88": "https://dos88.itch.io/dos-88-music-library",
+        "newc42": "https://newc-42.itch.io/spacewave"
+    };
+
+    trackArtist.innerHTML = `///<a href="${artistLinks[playlist[index].artist]}" target="_blank" rel="noopener noreferrer">${playlist[index].artist}</a>`;
+}
+
+// Play or pause
+playButton.addEventListener("click", function() {
+    if (!audio.src) {
+        loadTrack(0);
+    }
+    if (audio.paused) {
+        audio.play();
+        playButton.textContent = "pause";
+    } else {
+        audio.pause();
+        playButton.textContent = "play";
+    }
+});
+
+// Next track
+function nextTrack() {
+    currentTrack++;
+    if (currentTrack >= playlist.length) {
+        currentTrack = 0;
+    }
+    loadTrack(currentTrack);
+    audio.play();
+    playButton.textContent = "pause";
+}
+
+// Previous track
+function previousTrack() {
+    currentTrack--;
+    if (currentTrack < 0) {
+        currentTrack = playlist.length - 1;
+    }
+    loadTrack(currentTrack);
+    audio.play();
+    playButton.textContent = "pause";
+}
+
+nextButton.addEventListener("click", nextTrack);
+previousButton.addEventListener("click", previousTrack);
+
+// Automatically play the next track
+audio.addEventListener("ended", nextTrack);
+
+// Volume control
+volumeSlider.addEventListener("input", () => {
+    const sliderValue = volumeSlider.value;
+
+    if (sliderValue == 0.2) {
+        audio.volume = 0;
+    } else {
+        audio.volume = Math.pow(sliderValue, 3);
+    }
+});
+
+shufflePlaylist();
