@@ -2,7 +2,6 @@ let currentLevelText = document.getElementById("currentLevelText");
 document.querySelector(".respondSignalDiv").style.display = "none";
 let questionSignal = document.getElementById("questionSignal");
 let hintSignal = document.getElementById("hintSignal");
-/*Tell whether the user is correct*/
 let respondSignal = document.getElementById("respondSignal");
 
 let chapterName1 = document.querySelector(".chapterName1");
@@ -15,10 +14,8 @@ let chapterLengths = [16, 50, 10];
 let currentLevel = 1;
 let highestUnlockedLevel = 1;
 
-
-/*User inputted answer*/
 let signalInput = document.getElementById("signalInput");
-let sendButton = document.getElementById("sendButton");
+
 
 let preventPaste = true;
 signalInput.addEventListener("paste", function(event) {
@@ -29,16 +26,19 @@ signalInput.addEventListener("paste", function(event) {
 
 
 /*COSMETICS*/
-let typingSpeed = 27;
+/*lower is faster*/
+let typingSpeed = 30;
 
 
 /*Remember to update 
-function definating()
+HTML new dictionary section
+
+hide dictionary section, near recompile()
+recompile()
 dictionary section in html
-
-
-
 */
+let ne1 = "@-1_undef";
+let ne1Input = document.getElementById("ne1Input");
 let ne2 = "1420405750";
 let ne2Input = document.getElementById("ne2Input");
 let ne3 = "@-3_undef";
@@ -47,8 +47,8 @@ let ne4 = "@-4_undef";
 let ne4Input = document.getElementById("ne4Input");
 let ne5 = "@-5_undef";
 let ne5Input = document.getElementById("ne5Input");
-let ne1 = "@-1_undef";
-let ne1Input = document.getElementById("ne1Input");
+let ne6 = "@-6_undef";
+let ne6Input = document.getElementById("ne6Input");
 
 
 let intro0 = 1420405752;
@@ -73,44 +73,20 @@ let question = {
     5: () => [intro2].join("\n"),
     6: () => [intro3].join("\n"),
     7: () => [intro4].join("\n"),
-
     8: () => [intro0, intro1, intro2, intro3, intro4].join("\n"),
     9: () => [intro0, intro1, intro2, intro3, intro4, intro5].join("\n"),
-
     10: () => [intro0, ne2, intro1, ne2, intro2, ne2, intro3, ne2].join("\n"),
     11: () => [intro0, ne2, intro1, ne2, intro2, ne2, intro3, ne2, intro4, ne2, intro5, ne2].join("\n"),
     12: () => [intro3, ne2, intro4, ne2, intro5, ne2, intro6, ne2].join("\n"),
     13: () => [intro1, ne2, ne2, ne2, intro2, ne2, ne2, ne2, intro3, ne2, ne2, ne2].join("\n"),
     14: () => [intro0, ne2, ne2, ne2, intro1, ne2, ne2, ne2, intro2, ne2, ne2, ne2, intro3, ne2, ne2, ne2, intro4, ne2, ne2, ne2].join("\n"),
-
     15: () => [
     intro1, ne2, intro2, ne2, intro3, ne2, ne2, ne2,
     intro1, ne2, intro2, ne2, intro3, ne2, ne2, ne2,
     intro1, ne2, intro2, ne2].join("\n"),
-
     16:  () => [intro2, ne2, intro3, ne2, ne2, ne2, intro4, ne2, intro5, ne2, ne2, ne2, intro6, ne2, intro7, ne2, ne2, ne2, intro8, ne2].join("\n"),
-    
 
-
-    /* 
-    5: [0, -2, 1, -2, 2, -2, 3, -2].join("\n"),
-    6: [3, -2, 4, -2, 5, -2].join("\n"),
-    7: [5, -2, 6, -2, 7, -2, 8, -2].join("\n"),
-    8: [0, -2, 1, -2, 2, -2, 3, -2, 4, -2].join("\n"),
-    9:  () => [1, -2, -2, -2, 2, -2, -2, -2, 3, -2, -2, -2].join("\n"),
-    10:  () => [1, -2, 2, -2, 3, -2, -2, -2, 1, -2, 2, -2, 3, -2, -2, -2, 1, -2, 2, -2].join("\n"),
-    11:  () => [1, -2, 3, -2, 5, -2, 7, -2, -2, -2, 2, -2, 4, -2, 6, -2, 8, -2, -2, -2, 3, -2, 5, -2, 7, -2].join("\n"),
-    12:  () => [1, -2, 2, -2, -2, -2, 3, -2, 4, -2, -2, -2, 5, -2, 6, -2, -2, -2, 7, -2,].join("\n"),
-    13: () => [1, ne2, 2, ne2, 3, ne2, 4, ne2].join("\n"),
-    14:  () => [3, ne2, ne2, ne2, 4, ne2, ne2, ne2, 5, ne2, ne2, ne2, 6, ne2, ne2, ne2].join("\n"),
-    15: () => [
-        1, ne2, 2, ne2, 3, ne2, 4, ne2, 5, ne2, ne2, ne2,
-        1, ne2, 3, ne2, 5, ne2, 7, ne2, 9, ne2, ne2, ne2,
-        0, ne2, 2, ne2, 4, ne2, 6, ne2].join("\n"),
-    16:  () => [2, ne2, 3, ne2, ne2, ne2, 4, ne2, 5, ne2, ne2, ne2, 6, ne2, 7, ne2, ne2, ne2, 8, ne2,].join("\n"),
-    */ 
-
-    /*=*/
+    /* = */
     17: () => [
         1, ne3, 1, ne2, ne2, ne2,
         2, ne3, 2, ne2, ne2, ne2,
@@ -127,7 +103,7 @@ let question = {
     20: () => [
         0, ne3].join("\n"),
 
-    /*+*/
+    /* + */
     21: () => [
         5, ne4, 2, ne3, 7, ne2, ne2, ne2,
         1, ne4, 7, ne3, 8, ne2, ne2, ne2,
@@ -166,7 +142,7 @@ let question = {
         5, ne4, 2, ne3, 3, ne4, 4, ne2, ne2, ne2,
         4, ne4, 4, ne3, 2, ne4].join("\n"),
 
-    /*-*/
+    /* - */
     30: () => [
         6, ne5, 2, ne3, 4, ne2, ne2, ne2,
         7, ne5, 5, ne3, 2, ne2, ne2, ne2,
@@ -193,11 +169,14 @@ let question = {
         7, ne4, ne1, 20, ne3, ne1, 13, ne2, ne2, ne2,
         ne1, 9, ne5, 12, ne3, ne1, 21,ne2, ne2, ne2,
         2, ne5, ne1, 12, ne3].join("\n"),
-
     36: () => [
         0, ne5, 7, ne3].join("\n"),
     37: () => [
         3, ne2, 2, ne2, 1, ne2, 0, ne2, ne1, 1, ne2, ne1, 2, ne2, ne1, 3, ne2, ne1, 4, ne2, ne1, 5, ne2].join("\n"),
+
+    /* * or MULTIPLICATION */
+    38: () => [
+        ne1].join("\n"),
                 
     
 
@@ -215,6 +194,7 @@ let question = {
 -3 =
 -4 +
 -5 -
+-6 *
 */
 let answer = {
     1: () => [intro0],
@@ -275,13 +255,13 @@ let answer = {
 
 
 /* SUBMIT ANSWER BUTTON */
+let sendButton = document.getElementById("sendButton");
 sendButton.addEventListener("click", function() {
     let shortenedInput = signalInput.value.trim().toLowerCase().replace(/\s+/g, "");
     let currentLevelAnswer = answer[currentLevel];
     if (typeof currentLevelAnswer === "function") {
         currentLevelAnswer = currentLevelAnswer();
     }
-
     // allow either one answer or multiple accepted answers
     let acceptedAnswers = Array.isArray(currentLevelAnswer)
         ? currentLevelAnswer
@@ -297,18 +277,14 @@ sendButton.addEventListener("click", function() {
     else if (acceptedAnswers.some(function(possibleAnswer) {
         return String(possibleAnswer).trim().toLowerCase().replace(/\s+/g, "") === shortenedInput;
     })) {
-        
         if (currentLevel === highestUnlockedLevel) {
             highestUnlockedLevel++;
             respondSignal.textContent = ">>>incoMing tRAnsMission";
         }
-
         currentLevel += 1;
         updateQuestion();
         updateLevelSelector();
         milestoneCheck();
-        
-        
         signalInput.value = "";
     }
     
@@ -320,9 +296,12 @@ sendButton.addEventListener("click", function() {
 
 
 
-
-
-
+document.getElementById("ne1Section").style.display = "none";
+document.getElementById("ne2Section").style.display = "none";
+document.getElementById("ne3Section").style.display = "none";
+document.getElementById("ne4Section").style.display = "none";
+document.getElementById("ne5Section").style.display = "none";
+document.getElementById("ne6Section").style.display = "none";
 function milestoneCheck() {
     /* A G H M R V W X Z */
     document.querySelector(".hintSignalDiv").style.display = "block";
@@ -355,6 +334,7 @@ function milestoneCheck() {
 
     woah, ${ne2} is 2hz <u>below</u> 1420405752
     i think they are still counting`;
+    typingSpeed = 18;
     }
     else if (currentLevel === 13) {
     hintSignal.innerHTML = `seems like <u>${ne2} is just a separator</u>`;
@@ -363,17 +343,15 @@ function milestoneCheck() {
         hintSignal.innerHTML = `dictionary unlocked
 
         lets make this easier to read
-        try defining <u>${ne2}</u> with "space" or " "
+        try defining <u>${ne2}</u> with the word "space"
         then hit recompile
         
         copy and paste is also available`;
-        
-        preventPaste = false;
 
+        document.getElementById("refSection").style.display = "grid";
+        document.getElementById("ne2Section").style.display = "grid";
         document.querySelector(".dictionaryHeader").style.display = "flex";
-        document.querySelectorAll(".dictionarySection").forEach(function(element) {
-            element.style.display = "grid";
-        }); 
+        preventPaste = false;
     }
     else if (currentLevel === 17){
         chapterName1.textContent = "intro:";
@@ -386,12 +364,10 @@ function milestoneCheck() {
         `;
 
         let i = document.getElementById("ne2Text");
-        let j = document.getElementById("ne3Text");
-        let k = document.getElementById("refFreqText2");
+        let j = document.getElementById("refFreqText2");
 
         i.textContent = `@-2_undef`;
-        j.textContent = `@-3_undef`;
-        k.textContent = `the reference signal or '0'`;
+        j.textContent = `the reference signal or '0'`;
         
         intro0 = 0;
         intro1 = 1;
@@ -400,19 +376,41 @@ function milestoneCheck() {
         intro4 = 4;
         intro5 = 5;
         intro6 = 6;
-        definating();
+        intro7 = 7;
+        intro8 = 8;
+        intro9 = 9;
+
+        document.getElementById("ne3Section").style.display = "grid";
+        recompile();
     }
     else if (currentLevel === 21){
-        hintSignal.textContent = `neW siGnAl: @-4_undef`;
-        
+        hintSignal.innerHTML = `neW siGnAl: <u>@-4_undef</u>`;
+        document.getElementById("ne4Section").style.display = "grid";
     }
     else if (currentLevel === 30){
-        hintSignal.textContent = `neW siGnAl: @-5_undef`;
+        hintSignal.innerHTML = `neW siGnAl: <u>@-5_undef</u>`;
+        document.getElementById("ne5Section").style.display = "grid";
         
     }
     else if (currentLevel === 34){
-        hintSignal.textContent = `neW siGnAl: @-1_undef`;
+        hintSignal.innerHTML = `neW siGnAl: <u>@-1_undef</u>
         
+        finally, negative numbers
+        seems like we need to respond with <u>2 signals</u>
+        try responding with <u>${ne1}</u> 8
+        
+        `;
+        document.getElementById("ne1Section").style.display = "grid";
+    }
+    else if (currentLevel === 34){
+        hintSignal.innerHTML = `neW siGnAl: <u>@-1_undef</u>
+        
+        finally, negative numbers
+        seems like we need to respond with <u>2 signals</u>
+        try responding with <u>${ne1}</u> 8
+        
+        `;
+        document.getElementById("ne1Section").style.display = "grid";
     }
     else if (currentLevel === 241){
         chapterName2.textContent = "arithmetic:";
@@ -431,49 +429,58 @@ function milestoneCheck() {
 
 
 
+
+
+
 let recompileButton = document.getElementById("recompileButton");
+let dictionaryInputs = [ne1Input, ne2Input, ne3Input, ne4Input, ne5Input];
+dictionaryInputs.forEach(input =>
+    input.addEventListener("input", () => {
+        input.value = input.value.replace(/\s/g, "");
+    })
+);
+function recompile() {
+    dictionaryInputs.forEach((input, index) => {
+        input.classList.toggle("invalid",
+            input.value.trim() !== "" &&
+            dictionaryInputs.some((other, i) =>
+                i !== index &&
+                input.value.trim().toLowerCase() === other.value.trim().toLowerCase()
+            )
+        );
+    });
+
+    recompileButton.disabled = dictionaryInputs.some((input, index) =>
+        input.value.trim() !== "" &&
+        dictionaryInputs.some((other, i) =>
+            i !== index &&
+            input.value.trim().toLowerCase() === other.value.trim().toLowerCase()
+        )
+    );
+
+    if (recompileButton.disabled) return;
+
+    [ne1, ne2, ne3, ne4, ne5, ne6] = dictionaryInputs.map((input, index) =>
+    input.value.trim() ||
+    (index === 1 && highestUnlockedLevel < 17
+        ? "1420405750"
+        : `@-${index + 1}_undef`)
+    );
+}
+dictionaryInputs.forEach(input =>
+    input.addEventListener("input", recompile)
+);
 recompileButton.addEventListener("click", function() {
-    
-    definating();
+    recompile();
     updateQuestion();
+    milestoneCheck();
+    console.log(
+);
 });
 
-function definating(){
-    let i2 = ne2Input.value;
-    if (i2 == "") {
-        ne2 = "@-2_undef";
-    } else {
-        ne2 = i2;
-    }
 
-    let i3 = ne3Input.value;
-    if (i3 == "") {
-        ne3 = "@-3_undef";
-    } else {
-        ne3 = i3;
-    }
 
-    let i4 = ne4Input.value;
-    if (i4 == "") {
-        ne4 = "@-4_undef";
-    } else {
-        ne4 = i4;
-    }
 
-    let i5 = ne5Input.value;
-    if (i5 == "") {
-        ne5 = "@-5_undef";
-    } else {
-        ne5 = i5;
-    }
-
-    let i1 = ne1Input.value;
-    if (i1 == "") {
-        ne1 = "@-1_undef";
-    } else {
-        ne1 = i1;
-    }
-}
 
 let typingTimer;
 function updateQuestion() {
@@ -538,6 +545,7 @@ updateLevelSelector();
 
 
 /* PLAYTEST */
+/*
 let skipTestButton = document.getElementById("skipTestButton");
 skipTestButton.addEventListener("click", function() {
     if (currentLevel === highestUnlockedLevel) {
@@ -549,17 +557,16 @@ skipTestButton.addEventListener("click", function() {
     respondSignal.textContent = ">>>incoMing tRAnsMission";
     signalInput.value = "";
 
-    /*ne2Input.value = " ";
+    ne2Input.value = "space";
     ne3Input.value = "=";
     ne4Input.value = "+";
     ne5Input.value = "-"; 
-    definating();
-    */
+    ne1Input.value = "negative"; 
 
-    
+    recompile();
     updateQuestion();
-        });
-
-
-/*COSMETIC*/
-
+});
+for (let i = 0; i < 33; i++) {
+    skipTestButton.click();
+}
+*/
