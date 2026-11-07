@@ -27,15 +27,16 @@ signalInput.addEventListener("paste", function(event) {
 
 /*COSMETICS*/
 /*lower is faster*/
-let typingSpeed = 30;
+let typingSpeed = 100;
 
 
 /*Remember to update 
-HTML new dictionary section
+HTML new dictionary section: div is correct, input class is correct
 
-hide dictionary section, near recompile()
+hide dictionary section
+milestoneCheck()
+var dictionaryInputs
 recompile()
-dictionary section in html
 */
 let ne1 = "@-1_undef";
 let ne1Input = document.getElementById("ne1Input");
@@ -176,7 +177,11 @@ let question = {
 
     /* * or MULTIPLICATION */
     38: () => [
-        ne1].join("\n"),
+        2, ne6, 3, ne3, 6, ne2, ne2, ne2,
+        5, ne6, 4, ne3, 20, ne2, ne2, ne2,
+        9, ne6, 2, ne3, 18, ne2, ne2, ne2,
+        5, ne6, 5, ne3].join("\n"),
+    
                 
     
 
@@ -242,6 +247,7 @@ let answer = {
     35: "14",
     36: () => ["test", ne1 + "7"],
     37: () => ["test", ne1 + "6"],
+    38: () => ["test", "25"],
 
 
 
@@ -295,7 +301,7 @@ sendButton.addEventListener("click", function() {
 });
 
 
-
+/* PROGESSION CHECK */
 document.getElementById("ne1Section").style.display = "none";
 document.getElementById("ne2Section").style.display = "none";
 document.getElementById("ne3Section").style.display = "none";
@@ -317,6 +323,7 @@ function milestoneCheck() {
     }
     else if (currentLevel === 4){
         hintSignal.textContent = `oh the signal increased by 1hz`;
+        typingSpeed = 75;
     }
     else if (currentLevel === 5){
         hintSignal.textContent = `its 2hz above 1420405752`;
@@ -328,16 +335,19 @@ function milestoneCheck() {
         hintSignal.textContent = `multiple signal at once
         seems like they are counting
         why dont we try and send the next frequency after that`;
+        typingSpeed = 30;
     }
     else if (currentLevel === 10) {
-    hintSignal.innerHTML = `neW siGnAl: <u>${ne2}</u>
+        hintSignal.innerHTML = `neW siGnAl: <u>${ne2}</u>
 
-    woah, ${ne2} is 2hz <u>below</u> 1420405752
-    i think they are still counting`;
-    typingSpeed = 18;
+        woah, ${ne2} is 2hz <u>below</u> 1420405752
+        i think they are still counting`;
+        typingSpeed = 12;
     }
     else if (currentLevel === 13) {
-    hintSignal.innerHTML = `seems like <u>${ne2} is just a separator</u>`;
+        hintSignal.innerHTML = `seems like <u>${ne2} is just a separator</u>`;
+        typingSpeed = 8;
+
     }
     else if (currentLevel === 15){
         hintSignal.innerHTML = `dictionary unlocked
@@ -397,20 +407,15 @@ function milestoneCheck() {
         
         finally, negative numbers
         seems like we need to respond with <u>2 signals</u>
-        try responding with <u>${ne1}</u> 8
+        try responding with '<u>${ne1}</u> 8'
         
         `;
         document.getElementById("ne1Section").style.display = "grid";
     }
-    else if (currentLevel === 34){
-        hintSignal.innerHTML = `neW siGnAl: <u>@-1_undef</u>
+    else if (currentLevel === 38){
+        hintSignal.innerHTML = `neW siGnAl: <u>@-6_undef</u>`;
+        document.getElementById("ne6Section").style.display = "grid";
         
-        finally, negative numbers
-        seems like we need to respond with <u>2 signals</u>
-        try responding with <u>${ne1}</u> 8
-        
-        `;
-        document.getElementById("ne1Section").style.display = "grid";
     }
     else if (currentLevel === 241){
         chapterName2.textContent = "arithmetic:";
@@ -433,7 +438,7 @@ function milestoneCheck() {
 
 
 let recompileButton = document.getElementById("recompileButton");
-let dictionaryInputs = [ne1Input, ne2Input, ne3Input, ne4Input, ne5Input];
+let dictionaryInputs = [ne1Input, ne2Input, ne3Input, ne4Input, ne5Input, ne6Input];
 dictionaryInputs.forEach(input =>
     input.addEventListener("input", () => {
         input.value = input.value.replace(/\s/g, "");
@@ -474,8 +479,19 @@ recompileButton.addEventListener("click", function() {
     recompile();
     updateQuestion();
     milestoneCheck();
+
+    window.scrollTo({
+        top: 0,
+    });
+
     console.log(
-);
+        "ne1:", ne1,
+        "ne2:", ne2,
+        "ne3:", ne3,
+        "ne4:", ne4,
+        "ne5:", ne5,
+        "ne6:", ne6
+    );
 });
 
 
@@ -545,7 +561,7 @@ updateLevelSelector();
 
 
 /* PLAYTEST */
-/*
+
 let skipTestButton = document.getElementById("skipTestButton");
 skipTestButton.addEventListener("click", function() {
     if (currentLevel === highestUnlockedLevel) {
@@ -556,17 +572,19 @@ skipTestButton.addEventListener("click", function() {
     milestoneCheck();
     respondSignal.textContent = ">>>incoMing tRAnsMission";
     signalInput.value = "";
-
+    /*
     ne2Input.value = "space";
     ne3Input.value = "=";
     ne4Input.value = "+";
     ne5Input.value = "-"; 
     ne1Input.value = "negative"; 
+    ne6Input.value = "*"; 
+    */
 
     recompile();
     updateQuestion();
 });
+
 for (let i = 0; i < 33; i++) {
     skipTestButton.click();
 }
-*/
