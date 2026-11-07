@@ -562,6 +562,7 @@ updateLevelSelector();
 
 /* PLAYTEST */
 
+/*
 let skipTestButton = document.getElementById("skipTestButton");
 skipTestButton.addEventListener("click", function() {
     if (currentLevel === highestUnlockedLevel) {
@@ -572,14 +573,13 @@ skipTestButton.addEventListener("click", function() {
     milestoneCheck();
     respondSignal.textContent = ">>>incoMing tRAnsMission";
     signalInput.value = "";
-    /*
     ne2Input.value = "space";
     ne3Input.value = "=";
     ne4Input.value = "+";
     ne5Input.value = "-"; 
     ne1Input.value = "negative"; 
     ne6Input.value = "*"; 
-    */
+
 
     recompile();
     updateQuestion();
@@ -588,3 +588,5 @@ skipTestButton.addEventListener("click", function() {
 for (let i = 0; i < 33; i++) {
     skipTestButton.click();
 }
+
+*/
