@@ -1,4 +1,5 @@
 let currentLevelText = document.getElementById("currentLevelText");
+document.querySelector(".respondSignalDiv").style.display = "none";
 let questionSignal = document.getElementById("questionSignal");
 let hintSignal = document.getElementById("hintSignal");
 /*Tell whether the user is correct*/
@@ -19,9 +20,16 @@ let highestUnlockedLevel = 1;
 let signalInput = document.getElementById("signalInput");
 let sendButton = document.getElementById("sendButton");
 
+let preventPaste = true;
+signalInput.addEventListener("paste", function(event) {
+    if (preventPaste) {
+        event.preventDefault();
+    }
+});
+
 
 /*COSMETICS*/
-let typingSpeed = 30;
+let typingSpeed = 27;
 
 
 /*Remember to update 
@@ -31,7 +39,7 @@ dictionary section in html
 
 
 */
-let ne2 = "@-2_undef";
+let ne2 = "1420405750";
 let ne2Input = document.getElementById("ne2Input");
 let ne3 = "@-3_undef";
 let ne3Input = document.getElementById("ne3Input");
@@ -43,11 +51,48 @@ let ne1 = "@-1_undef";
 let ne1Input = document.getElementById("ne1Input");
 
 
+let intro0 = 1420405752;
+let intro1 = 1420405753;
+let intro2 = 1420405754;
+let intro3 = 1420405755;
+let intro4 = 1420405756;
+let intro5 = 1420405757;
+let intro6 = 1420405758;
+let intro7 = 1420405759;
+let intro8 = 1420405760;
+let intro9 = 1420405761;
+
+
+
+
 let question = {
-    1: "0",
-    2: "1",
-    3: "2",
-    4: "3",
+    1: () => [intro0].join("\n"),
+    2: () => [intro0].join("\n"),
+    3: () => [intro0].join("\n"),
+    4: () => [intro1].join("\n"),
+    5: () => [intro2].join("\n"),
+    6: () => [intro3].join("\n"),
+    7: () => [intro4].join("\n"),
+
+    8: () => [intro0, intro1, intro2, intro3, intro4].join("\n"),
+    9: () => [intro0, intro1, intro2, intro3, intro4, intro5].join("\n"),
+
+    10: () => [intro0, ne2, intro1, ne2, intro2, ne2, intro3, ne2].join("\n"),
+    11: () => [intro0, ne2, intro1, ne2, intro2, ne2, intro3, ne2, intro4, ne2, intro5, ne2].join("\n"),
+    12: () => [intro3, ne2, intro4, ne2, intro5, ne2, intro6, ne2].join("\n"),
+    13: () => [intro1, ne2, ne2, ne2, intro2, ne2, ne2, ne2, intro3, ne2, ne2, ne2].join("\n"),
+    14: () => [intro0, ne2, ne2, ne2, intro1, ne2, ne2, ne2, intro2, ne2, ne2, ne2, intro3, ne2, ne2, ne2, intro4, ne2, ne2, ne2].join("\n"),
+
+    15: () => [
+    intro1, ne2, intro2, ne2, intro3, ne2, ne2, ne2,
+    intro1, ne2, intro2, ne2, intro3, ne2, ne2, ne2,
+    intro1, ne2, intro2, ne2].join("\n"),
+
+    16:  () => [intro2, ne2, intro3, ne2, ne2, ne2, intro4, ne2, intro5, ne2, ne2, ne2, intro6, ne2, intro7, ne2, ne2, ne2, intro8, ne2].join("\n"),
+    
+
+
+    /* 
     5: [0, -2, 1, -2, 2, -2, 3, -2].join("\n"),
     6: [3, -2, 4, -2, 5, -2].join("\n"),
     7: [5, -2, 6, -2, 7, -2, 8, -2].join("\n"),
@@ -63,6 +108,7 @@ let question = {
         1, ne2, 3, ne2, 5, ne2, 7, ne2, 9, ne2, ne2, ne2,
         0, ne2, 2, ne2, 4, ne2, 6, ne2].join("\n"),
     16:  () => [2, ne2, 3, ne2, ne2, ne2, 4, ne2, 5, ne2, ne2, ne2, 6, ne2, 7, ne2, ne2, ne2, 8, ne2,].join("\n"),
+    */ 
 
     /*=*/
     17: () => [
@@ -167,32 +213,34 @@ let question = {
 -1 NEGATIVE
 -2 SPACE 
 -3 =
--4 ADDITION
--5 SUBTRACTION
+-4 +
+-5 -
 */
 let answer = {
-    1: "0",
-    2: "1",
-    3: "2",
-    4: "3",
-    5: "4",
-    6: "6",
-    7: "9",
-    8: "5",
-    9: "4",
-    10: "3",
-    11: "9",
-    12: "8",
-    13: "5",
-    14: "7",
-    15: "8",
-    16: "9",
+    1: () => [intro0],
+    2: () => [intro0],
+    3: () => [intro0],
+    4: () => [intro1],
+    5: () => [intro2],
+    6: () => [intro3],
+    7: () => [intro4],
+    8: () => [intro5],
+    9: () => [intro6],
 
+
+    10: () => [intro4],
+    11: () => [intro6],
+    12: () => [intro7],
+    13: () => [intro4],
+    14: () => [intro5],
+    15: () => [intro3],
+    16: () => [intro9],
+
+    /* -4 ADDITION */
     17: "4",
     18: "5",
     19: "1656",
     20: "0",
-
     21: "5",
     22: "12",
     23: "4",
@@ -203,11 +251,13 @@ let answer = {
     28: "0",
     29: "6",
 
+    /* -5 SUBTRACTION */
     30: "1",
     31: "2",
     32: "7",
     33: "2",
 
+    /* -1 NEGATIVE */
     34: () => ["test", ne1 + "8"],
     35: "14",
     36: () => ["test", ne1 + "7"],
@@ -247,6 +297,7 @@ sendButton.addEventListener("click", function() {
     else if (acceptedAnswers.some(function(possibleAnswer) {
         return String(possibleAnswer).trim().toLowerCase().replace(/\s+/g, "") === shortenedInput;
     })) {
+        
         if (currentLevel === highestUnlockedLevel) {
             highestUnlockedLevel++;
             respondSignal.textContent = ">>>incoMing tRAnsMission";
@@ -256,14 +307,14 @@ sendButton.addEventListener("click", function() {
         updateQuestion();
         updateLevelSelector();
         milestoneCheck();
-
+        
         
         signalInput.value = "";
     }
     
     /*if incorrect */
     else {
-        respondSignal.textContent  = "no Response\nlAst inputted siGnAl: " + signalInput.value;
+        respondSignal.textContent  = "no Response /// lAst inputted siGnAl: " + signalInput.value;
     }
 });
 
@@ -274,37 +325,82 @@ sendButton.addEventListener("click", function() {
 
 function milestoneCheck() {
     /* A G H M R V W X Z */
-    document.querySelector(".tempVar2").style.display = "block";
+    document.querySelector(".hintSignalDiv").style.display = "block";
     if (currentLevel === 2){
-        document.querySelector(".tempVar1").style.display = "block";
-        document.querySelector(".tempVar2").style.display = "none";
-    }   
-    else if (currentLevel === 5){
-        hintSignal.textContent = `neW siGnAl: -2`;
-    }
-    else if (currentLevel === 9){
+        document.querySelector(".respondSignalDiv").style.display = "block";
         document.querySelector(".navbar").style.display = "block";
         document.getElementById("currentLevelText").style.display = "block";
-        document.querySelector(".tempVar2").style.display = "none";
+        hintSignal.textContent = `1420405752 hz is the unperturbed atomic 
+        hydrogen ground state hyperfine transition frequency`;
+    }   
+    else if (currentLevel === 3){
+        hintSignal.textContent = `1420405752 hz seems important`;
     }
-    else if (currentLevel === 13){
-        hintSignal.textContent = `tHe siGnAl -2 HAs been ReplAced WitH @-2_undef`;
+    else if (currentLevel === 4){
+        hintSignal.textContent = `oh the signal increased by 1hz`;
+    }
+    else if (currentLevel === 5){
+        hintSignal.textContent = `its 2hz above 1420405752`;
+    }
+    else if (currentLevel === 6){
+        hintSignal.textContent = `now its 3hz above`;
+    }
+    else if (currentLevel === 8){
+        hintSignal.textContent = `multiple signal at once
+        seems like they are counting
+        why dont we try and send the next frequency after that`;
+    }
+    else if (currentLevel === 10) {
+    hintSignal.innerHTML = `neW siGnAl: <u>${ne2}</u>
+
+    woah, ${ne2} is 2hz <u>below</u> 1420405752
+    i think they are still counting`;
+    }
+    else if (currentLevel === 13) {
+    hintSignal.innerHTML = `seems like <u>${ne2} is just a separator</u>`;
     }
     else if (currentLevel === 15){
-        hintSignal.textContent = `dictionary unlocked
-        try defining @-2_undef
-        then recompile it`;
+        hintSignal.innerHTML = `dictionary unlocked
+
+        lets make this easier to read
+        try defining <u>${ne2}</u> with "space" or " "
+        then hit recompile
         
+        copy and paste is also available`;
+        
+        preventPaste = false;
+
         document.querySelector(".dictionaryHeader").style.display = "flex";
         document.querySelectorAll(".dictionarySection").forEach(function(element) {
             element.style.display = "grid";
         }); 
     }
     else if (currentLevel === 17){
-        chapterName1.textContent = "logic:";
+        chapterName1.textContent = "intro:";
         document.querySelector(".chapterName2").style.display = "block";
-        hintSignal.textContent = `neW siGnAl: @-3_undef`;
+        hintSignal.innerHTML = `neW siGnAl: <u>@-3_undef</u>
+        just like a normal signal but <u>3 below</u> the reference signal
         
+        i also let <u>1420405752</u>, our reference signal, be '0'
+        with all signals <u>above</u> it be positive integers
+        `;
+
+        let i = document.getElementById("ne2Text");
+        let j = document.getElementById("ne3Text");
+        let k = document.getElementById("refFreqText2");
+
+        i.textContent = `@-2_undef`;
+        j.textContent = `@-3_undef`;
+        k.textContent = `the reference signal or '0'`;
+        
+        intro0 = 0;
+        intro1 = 1;
+        intro2 = 2;
+        intro3 = 3;
+        intro4 = 4;
+        intro5 = 5;
+        intro6 = 6;
+        definating();
     }
     else if (currentLevel === 21){
         hintSignal.textContent = `neW siGnAl: @-4_undef`;
@@ -329,7 +425,7 @@ function milestoneCheck() {
     
     else {
         hintSignal.textContent = "";
-        document.querySelector(".tempVar2").style.display = "none";
+        document.querySelector(".hintSignalDiv").style.display = "none";
     }
 }
 
@@ -337,6 +433,7 @@ function milestoneCheck() {
 
 let recompileButton = document.getElementById("recompileButton");
 recompileButton.addEventListener("click", function() {
+    
     definating();
     updateQuestion();
 });
@@ -452,11 +549,14 @@ skipTestButton.addEventListener("click", function() {
     respondSignal.textContent = ">>>incoMing tRAnsMission";
     signalInput.value = "";
 
-    ne2Input.value = " ";
+    /*ne2Input.value = " ";
     ne3Input.value = "=";
     ne4Input.value = "+";
-    ne5Input.value = "-";
+    ne5Input.value = "-"; 
     definating();
+    */
+
+    
     updateQuestion();
         });
 
