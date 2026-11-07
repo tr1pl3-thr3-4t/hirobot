@@ -36,29 +36,26 @@
         </aside>
 
         <main class="gameSpace">
-                <!-- <h2 id="currentLevelText"></h2> -->
-                
-
             <div class="noBorder respondSignalDiv">
                 <p id="respondSignal">placeholder</p>
             </div>
             <div class="noBorder hintSignalDiv">
                 <p id="hintSignal">placeholder</p>
             </div>
-
             <div class="noBorder">
                 <p id="questionSignal">0</p>
             </div>
-
-
-
-            <div>
+            <div id="singalInputDiv">
                 <input id="signalInput" type="text" placeholder="> awaiting response" autocomplete="off">
                 <button id="sendButton">send</button>
             </div>
         </main>
         
     </main>
+
+
+
+
 
     <main class="page2">
         <main>
@@ -109,24 +106,28 @@
 
 
 
+
     <section class="musicPlayer">
         <div class="playerControls">
-            <button id="previousButton">previous</button>
-            <button id="playButton">play</button>
-            <button id="nextButton">next</button>
+            <button id="previousButton">pReVious</button>
+            <button id="playButton">plAy</button>
+            <button id="nextButton">neXt</button>
         </div>
 
         <div class="playerTrack">
-            <p id="trackName">no track playing</p>
+            <p id="trackName">no tRAck plAyinG</p>
             <p id="trackArtist">---</p>
         </div>
 
-        
-
         <div class="playerVolume">
-            <span>vol</span>
+            <span>Vol</span>
             <input type="range" id="volumeSlider"
                 min="0.2" max="0.75" step="0.01" value="0.31">
+        </div>
+
+        <div class="playerVisualizer">
+            <span>Vis</span>
+            <canvas id="visualizer"></canvas>
         </div>
 
         <audio id="audioPlayer"></audio>
