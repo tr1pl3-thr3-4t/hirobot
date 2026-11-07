@@ -732,7 +732,7 @@ const volumeSlider = document.getElementById("volumeSlider");
 let currentTrack = 0;
 
 // Initial volume
-audio.volume = 0.05;
+audio.volume = 0.03;
 
 // Load a track
 function loadTrack(index) {
@@ -793,14 +793,19 @@ previousButton.addEventListener("click", previousTrack);
 audio.addEventListener("ended", nextTrack);
 
 // Volume control
-volumeSlider.addEventListener("input", () => {
-    const sliderValue = volumeSlider.value;
+function updateVolume() {
+    const sliderValue = Number(volumeSlider.value);
 
-    if (sliderValue == 0.2) {
+    if (sliderValue === 0.2) {
         audio.volume = 0;
     } else {
         audio.volume = Math.pow(sliderValue, 3);
     }
-});
+}
+updateVolume();
+volumeSlider.addEventListener("input", updateVolume);
+volumeSlider.addEventListener("change", updateVolume);
+
+
 
 shufflePlaylist();
