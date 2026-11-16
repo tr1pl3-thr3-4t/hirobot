@@ -1,52 +1,130 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hirobot</title>
+
+    <title>Personal Dossier // Database</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="dataRain.js" defer></script>
 </head>
 
 <body>
+    <canvas id="dataRain"></canvas>
 
-    <header>
-        <h1>Hirobot</h1>
-        <p>A collection of personal projects.</p>
-    </header>
+    <div class="page-shell">
 
-    <main>
-        <div class="sectionTitle">PROJECTS /// 02</div>
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Dossier home">NEXUS DIRECTIVE</a>
+            <span class="database-label">// DATABASE</span>
+        </header>
 
-        <div class="project">
-            <div>
-                <a class="projectTitle" href="signal_game/signal.html">
-                    <h2>A Message from Glorp</h2>
-                </a>
+        <main>
 
-                <p>
-                    A game similar to <a href="https://store.steampowered.com/app/4080030/The_Message_from_Deep_Space/" target="_blank" rel="noopener noreferrer">"The Message from Deep Space"</a> by Applesinmypants
-                </p>
-            </div>
+            <section class="identity-grid" aria-label="Dossier identity">
+                <div class="identity-item">
+                    <span class="orange-tag">UNIT ID</span>
+                    <h1 id="unitId">TR1PL3_THR3_4T</h1>
+                </div>
 
-            <a class="arrow" href="signal_game/signal.html">↗</a>
-        </div>
+                <div class="identity-item status-item">
+                    <span class="orange-tag">STATUS</span>
+                    <h2 id="unitStatus">ALIVE</h2>
+                </div>
+            </section>
 
-        <div class="project">
-            <div>
-                <a class="projectTitle" href="aisbw/aisbw.html">
-                    <h2>As It Shall Be Written</h2>
-                </a>
-                <p>Worldbuilding</p>
-            </div>
+            <nav class="top-nav" aria-label="Main navigation">
+                <button type="button" class="nav-button active" data-view="profile">PROFILE</button>
+                <button type="button" class="nav-button" data-view="records">RECORDS</button>
+                <button type="button" class="nav-button" data-view="projects">PROJECTS</button>
+            </nav>
 
-            <a class="arrow" href="aisbw/aisbw.html">↗</a>
-        </div>
-    </main>
+            <section class="content-panel" id="profileView">
+                <div class="manifest-label">&gt;&gt; PROFILE</div>
+                <div class="profileData"></div>
+            </section>
 
-    <footer>
-        HIROBOT&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;&nbsp;TTT
-    </footer>
+            <section class="content-panel hidden" id="recordsView">
+                <div class="manifest-label">&gt;&gt; RECORDS</div>
 
+                <div class="record-grid">
+                    <article class="record">
+                        <span class="record-code">REC-001</span>
+                        <h3>[ REDACTED ]</h3>
+                        <p>///</p>
+                    </article>
+
+                    <article class="record">
+                        <span class="record-code">REC-002</span>
+                        <h3>[ REDACTED ]</h3>
+                        <p>///</p>
+                    </article>
+
+                    <article class="record">
+                        <span class="record-code">REC-003</span>
+                        <h3>[ REDACTED ]</h3>
+                        <p>///</p>
+                    </article>
+
+                    <article class="record">
+                        <span class="record-code">REC-004</span>
+                        <h3>[ REDACTED ]</h3>
+                        <p>///</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-panel hidden" id="projectsView">
+                <div class="manifest-label">&gt;&gt; PROJECTS</div>
+
+                <div class="record-grid">
+
+                    
+
+                    <article class="record record-link">
+                        <a href="signal_game/signal.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <span class="record-code">PRJ-002</span>
+                            <h3>A MESSAGE FROM GLORP</h3>
+                        </a>
+
+                        <p>
+                            A game similar to
+                            <a
+                                href="https://store.steampowered.com/app/4080030/The_Message_from_Deep_Space/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="external-link"
+                            >"The Message from Deep Space"</a>
+                            by Applesinmypants.
+                        </p>
+                    </article>
+
+                    <article class="record record-link">
+                        <a href="aisbw/aisbw.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <span class="record-code">PRJ-001</span>
+                            <h3>AS IT SHALL BE WRITTEN</h3>
+                        </a>
+                        <p>Worldbuilding.</p>
+                    </article>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <span id="systemInfo">LOADING SYSTEM INFORMATION...</span>
+            <span id="currentTime">CURRENT TIME: --:--:--</span>
+            <span id="lastUpdated">LAST UPDATED: --/--/----</span>
+        </footer>
+
+    </div>
 </body>
 </html>
