@@ -15,9 +15,18 @@ text<br><br><br>
 00/00/0000<br><br><br>
 */
 const profileData = `
+<span class="orange-text">ALIAS</span><br>
+[ REDACTED ]<br>
+Hirobot<br>
+[ REDACTED ]<br><br><br>
+
 <span class="orange-text">[ REDACTED ]</span><br>
-///<br>
-///<br><br><br>
+[ REDACTED ]<br><br><br>
+
+<span class="orange-text">[ REDACTED ]</span><br>
+[ REDACTED ]<br>
+[ REDACTED ]<br>
+[ REDACTED ]<br><br><br>
 
 `;
 document.querySelector(".profileData").innerHTML = profileData;
