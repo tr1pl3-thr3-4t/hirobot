@@ -5,6 +5,21 @@ document.addEventListener("click", function() {
     backgroundMusic.volume = 0.01;
 }, { once: true });
 
+function closeAllCategories() {
+    loreList.style.display = "none";
+    chroniclesOfTheEternalMagesList.style.display = "none";
+    magicTypesList.style.display = "none";
+    weaponsList.style.display = "none";
+    spellsList.style.display = "none";
+    statusEffectsList.style.display = "none";
+
+    loreTitle.style.textDecoration = "underline";
+    chroniclesOfTheEternalMagesTitle.style.textDecoration = "underline";
+    magicTypesTitle.style.textDecoration = "underline";
+    weaponsTitle.style.textDecoration = "underline";
+    spellsTitle.style.textDecoration = "underline";
+    statusEffectsTitle.style.textDecoration = "underline";
+}
 
 /*Nav Bar*/
 let loreTitle = document.getElementById("loreTitle");
@@ -14,6 +29,7 @@ loreList.style.display = "none";
 loreTitle.addEventListener("click", function() {
 
     if (loreList.style.display === "none") {
+        closeAllCategories();
         loreList.style.display = "block";
         loreTitle.style.textDecoration = "none";
     } else {
@@ -28,6 +44,7 @@ let chroniclesOfTheEternalMagesList = document.getElementById("chroniclesOfTheEt
 chroniclesOfTheEternalMagesList.style.display = "none";
 chroniclesOfTheEternalMagesTitle.addEventListener("click", function() {
     if (chroniclesOfTheEternalMagesList.style.display === "none") {
+        closeAllCategories();
         chroniclesOfTheEternalMagesList.style.display = "block";
         chroniclesOfTheEternalMagesTitle.style.textDecoration = "none";
     } else {
@@ -41,6 +58,7 @@ let magicTypesList = document.getElementById("magicTypesList");
 magicTypesList.style.display = "none";
 magicTypesTitle.addEventListener("click", function() {
     if (magicTypesList.style.display === "none") {
+        closeAllCategories();
         magicTypesList.style.display = "block";
         magicTypesTitle.style.textDecoration = "none";
     } else {
@@ -54,6 +72,7 @@ let weaponsList = document.getElementById("weaponsList");
 weaponsList.style.display = "none";
 weaponsTitle.addEventListener("click", function() {
     if (weaponsList.style.display === "none") {
+        closeAllCategories();
         weaponsList.style.display = "block";
         weaponsTitle.style.textDecoration = "none";
     } else {
@@ -62,16 +81,17 @@ weaponsTitle.addEventListener("click", function() {
     }
 });
 
-let SpellsTitle = document.getElementById("SpellsTitle");
-let SpellsList = document.getElementById("SpellsList");
-SpellsList.style.display = "none";
-SpellsTitle.addEventListener("click", function() {
-    if (SpellsList.style.display === "none") {
-        SpellsList.style.display = "block";
-        SpellsTitle.style.textDecoration = "none";
+let spellsTitle = document.getElementById("spellsTitle");
+let spellsList = document.getElementById("spellsList");
+spellsList.style.display = "none";
+spellsTitle.addEventListener("click", function() {
+    if (spellsList.style.display === "none") {
+        closeAllCategories();
+        spellsList.style.display = "block";
+        spellsTitle.style.textDecoration = "none";
     } else {
-        SpellsList.style.display = "none";
-        SpellsTitle.style.textDecoration = "underline";
+        spellsList.style.display = "none";
+        spellsTitle.style.textDecoration = "underline";
     }
 });
 
@@ -80,6 +100,7 @@ let statusEffectsList = document.getElementById("statusEffectsList");
 statusEffectsList.style.display = "none";
 statusEffectsTitle.addEventListener("click", function() {
     if (statusEffectsList.style.display === "none") {
+        closeAllCategories();
         statusEffectsList.style.display = "block";
         statusEffectsTitle.style.textDecoration = "none";
     } else {

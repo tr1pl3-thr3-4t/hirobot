@@ -3,21 +3,68 @@ MedievalSharp - heavy style
 Goudy Bookletter 1911 - great readability*/
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=MedievalSharp&display=swap');
 
-body {
-    margin: 0;
+html {
+    min-height: 100%;
     background-color: #18120e;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
     color: #e8dcc8;
-
     font-size: 18px;
     font-family: "Goudy Bookletter 1911", serif;
-    font-weight: 400;
-    font-style: normal;
+
+
+    background-image:
+        radial-gradient(ellipse at 50% 0%,
+            rgba(150, 105, 55, 0.18), transparent 65%),
+
+        radial-gradient(ellipse at 0% 100%,
+            rgba(110, 70, 35, 0.13), transparent 55%),
+
+        radial-gradient(ellipse at 100% 100%,
+            rgba(110, 70, 35, 0.13), transparent 55%),
+
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 220, 170, 0.012) 0px,
+            rgba(255, 220, 170, 0.012) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    background-attachment: fixed;
+
+    position: relative;
+    isolation: isolate;
+
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    border: 12px solid #18120e;
+    outline: 1px solid rgba(139, 112, 77, 0.45);
+    outline-offset: -13px;
+
+    box-shadow:
+        inset 0 0 25px rgba(139, 112, 77, 0.12);
+
+    pointer-events: none;
+    z-index: 10;
 }
 
 header {
-    padding: 30px;
+    position: relative;
+    padding: 30px 30px 5px 30px ;
     margin-left: 50px;
+
+    z-index: 1;
 }
+
+
+
 
 h1 {
     font-size: 40px;
@@ -31,6 +78,8 @@ h1 {
 }
 
 .page {
+    box-sizing: border-box;
+
     border-top: 1px solid #6b5540;
     display: flex;
     /* flex-direction determines the main axis, defaulted to row
@@ -40,6 +89,7 @@ h1 {
     /* align-items: flex-start; */
 
     gap: 20px;
+    z-index: 1;
 }
 
 aside {
@@ -53,6 +103,13 @@ main {
     flex: 1;
     padding: 20px;
     margin-right: 35px;
+
+    line-height: 1.8;
+    max-width: 1100px;
+}
+
+main p {
+    margin-bottom: 22px;
 }
 
 
@@ -64,6 +121,13 @@ main {
 .clickable {
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-color: #6b5540;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+}
+.clickable:hover {
+    color: #c9a96e;
+    text-decoration-color: #c9a96e;
 }
 /*Remove indentation of Nav*/
 #navList{
@@ -82,8 +146,30 @@ main {
 
 /*Main Text*/
 /*Divider between headings*/
-#subcat{
+.subcat {
+    position: relative;
+    color: #c9a96e;
+    font-family: "MedievalSharp", cursive;
+    letter-spacing: 1.5px;
+
     border-bottom: 1px solid #6b5540;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+
+    text-shadow: 0 0 12px rgba(201, 169, 110, 0.15);
+}
+
+.subcat::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    bottom: -15.25px;
+    transform: translateX(-50%);
+
+    padding: 0 10px;
+
+    color: #c9a96e;
+    font-size: 16px;
 }
 /*Emphasizes quotes*/
 .listQuote{
@@ -101,6 +187,9 @@ footer {
     text-align: center;
     font-size: 14px;
     color: #888;
+
+    position: relative;
+    z-index: 1;
 }
 
 footer a {
@@ -111,4 +200,14 @@ footer a {
 footer a:hover {
     color: #c9a96e;
     text-decoration: underline;
+}
+
+
+#magicDust {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
 }
