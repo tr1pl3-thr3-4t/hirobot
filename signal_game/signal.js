@@ -183,8 +183,9 @@ let question = {
         3, ne5, 7, ne3, ne1, 4, ne2, ne2, ne2,
         1, ne5, 9, ne3].join("\n"),
     35: () => [
-        7, ne4, ne1, 20, ne3, ne1, 13, ne2, ne2, ne2,
         ne1, 9, ne5, 12, ne3, ne1, 21,ne2, ne2, ne2,
+        7, ne5, ne1, 20, ne3, 27, ne2, ne2, ne2,
+
         2, ne5, ne1, 12, ne3].join("\n"),
     36: () => [
         0, ne5, 7, ne3].join("\n"),
@@ -312,6 +313,11 @@ sendButton.addEventListener("click", function() {
     
     /*if incorrect */
     else {
+        
+        if (currentLevel === 1){
+            document.querySelector(".hintSignalDiv").style.display = "block";
+            hintSignal.textContent = `try sending 1420405752 back`;
+        }
         respondSignal.innerHTML =
             'no Response /// lAst inputted siGnAl: <span style="color: #96B891;">' +
             signalInput.value +
@@ -335,11 +341,14 @@ function milestoneCheck() {
     /* A G H M R V W X Z */
     document.querySelector(".hintSignalDiv").style.display = "block";
     if (currentLevel === 2){
-        document.querySelector(".respondSignalDiv").style.display = "block";
         document.querySelector(".navbar").style.display = "block";
+        document.querySelector(".respondSignalDiv").style.display = "block";
         document.getElementById("currentLevelText").style.display = "block";
         hintSignal.textContent = `1420405752 hz is the unperturbed atomic 
-        hydrogen ground state hyperfine transition frequency`;
+        hydrogen ground state hyperfine transition frequency
+        
+        try sending 1420405752 again
+        `;
 
         playButton.click();
         audioContext.resume();
@@ -380,7 +389,7 @@ function milestoneCheck() {
 
     }
     else if (currentLevel === 15){
-        hintSignal.innerHTML = `dictionary unlocked
+        hintSignal.innerHTML = `recompiler unlocked
 
         lets make this easier to read
         try defining <u>${ne2}</u> with the word "space"
@@ -397,9 +406,10 @@ function milestoneCheck() {
         chapterName1.textContent = "intro:";
         document.querySelector(".chapterName2").style.display = "block";
         hintSignal.innerHTML = `neW siGnAl: <u>@-3_undef</u>
-        just like a normal signal but <u>3 below</u> the reference signal
+        is equivalent to <u>1420405749</u>
+        is equivalent to <u>3 below</u> the reference signal
         
-        i also let <u>1420405752</u>, our reference signal, be '0'
+        our reference signal, <u>1420405752</u>, is now '0'
         with all signals <u>above</u> it be positive integers
         `;
 
@@ -424,7 +434,9 @@ function milestoneCheck() {
         recompile();
     }
     else if (currentLevel === 21){
-        hintSignal.innerHTML = `neW siGnAl: <u>@-4_undef</u>`;
+        hintSignal.innerHTML = `neW siGnAl: <u>@-4_undef</u>
+        
+        try looking at older transmissions if youre stuck`;
         document.getElementById("ne4Section").style.display = "grid";
     }
     else if (currentLevel === 30){

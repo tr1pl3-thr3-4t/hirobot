@@ -1,6 +1,3 @@
-/* Font: 
-MedievalSharp - heavy style
-Goudy Bookletter 1911 - great readability*/
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Major+Mono+Display&family=Major+Mono+Display&display=swap');
 
 /*Always capitalize */
@@ -14,14 +11,49 @@ body {
     font-family: "Major Mono Display", monospace;
     font-weight: 400;
     font-style: normal;
+
+    position: relative;
+    isolation: isolate;
 }
+/* CRT EFFECT */
+/* Screen vignette */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at center,
+        transparent 55%,
+        rgba(0, 0, 0, 0.35) 100%
+    );
+}
+/* Horizontal scanlines */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.20) 3px,
+        rgba(0, 0, 0, 0.20) 4px
+    );
+}
+
 header {
     padding: 15px;
     margin-left: 50px;
 }
 h1 {
-    font-size: 40px;
-    font-family: "Goudy Bookletter 1911";
+    font-size: 30px;
+    font-family: "Major Mono Display", monospace;
     font-weight: 700;
     font-style: normal;
 }
@@ -103,9 +135,7 @@ div {
 .musicPlayer div {
     border: none;
 }
-#singalInputDiv{
-    border-bottom: 1px solid #6b6b6b8c;
-}
+
 
 /* SPAN */
 .chapterName1, .chapterName2, .chapterName3 {
@@ -248,6 +278,7 @@ div {
 
 
 
+
 ::selection {
     background: #555555;
     color: #ffffff;
@@ -385,7 +416,22 @@ div {
 }
 
 
-
+#signalBackground {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+header,
+main,
+footer,
+section,
+aside {
+    position: relative;
+    z-index: 1;
+}
 
 /* MOBILE maybe will implement
 @media (max-width: 600px) {
